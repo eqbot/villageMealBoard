@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    h1 Village: #{village.village_name}
+
+    h2 Meals
+
+    ul
+        each meal in village_meals
+            li
+                a(href=meal.url) #{meal.meal_date.toLocaleDateString('en-US', {timeZone: 'UTC'})} - #{meal.maker}
+        li
+            a(href=village.url + '/meal/create') + Add New

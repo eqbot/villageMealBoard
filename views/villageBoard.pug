@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to the village meal board
+
+    h1 Villages
+    if error
+        p Error loading village list
+    else
+        ul
+            each val in data.villages
+                li
+                    a(href=val.url) #{val.village_name}
+            li
+                a(href='/villageBoard/village/create') + Add New

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= title
+    
+    form(method='POST' action='')
+        div.form-group
+            label(for='meal_date') Meal Date:
+            input#meal_date.form-control(type='date' name='meal_date' required='true' value=(undefined===meal ? '' : meal.meal_date.toISOString().split('T')[0]) readonly=date_readonly)
+            label(for='maker') Meal Maker (Optional):
+            input#maker.form-control(type='text' placeholder='Maker Name' name='maker' value=(undefined===meal ? '' : meal.maker))
+        button.btn.btn-primary(type='submit') Submit
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

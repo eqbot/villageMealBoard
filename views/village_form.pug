@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1= title
+    
+    form(method='POST' action='')
+        div.form-group
+            label(for='village_name') Village Name:
+            input#village_name.form-control(type='text' placeholder='Village Name', name='village_name', required='true', value=(undefined===village ? '' : village.village_name))
+            label(for='village_admin_key') Village Admin Key: (Save this somewhere, and don't use an existing password. I store this in plaintext)
+            input#village_admin_key.form-control(type='text' placeholder='Village Admin Key', name='village_admin_key', required='true', value=(undefined===village ? '' : village.village_admin_key))
+            label(for='village_user_key') Village User Key (Optional):
+            input#village_user_key.form-control(type='text' placeholder='Village User Key', name='village_user_key', value=(undefined===village ? '' : village.village_user_key))
+        button.btn.btn-primary(type='submit') Submit
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1 Village: 
+        a(href=meal.village.url) #{meal.village.village_name}
+
+    p #[strong Made on:] #{meal.meal_date.toLocaleDateString('en-US', {timeZone: 'UTC'})}
+    p #[strong Made by:] #{meal.maker}
+    a(href=meal.url+'/update') Update
